@@ -1,0 +1,5 @@
+C:\Users\mike.duncan\documents\visual studio 2010\Projects\nmap-tools\nmap-tools\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\mike.duncan\documents\visual studio 2010\Projects\nmap-tools\nmap-tools\bin\Debug\nmap-tools.dll
+C:\Users\mike.duncan\documents\visual studio 2010\Projects\nmap-tools\nmap-tools\bin\Debug\nmap-tools.pdb
+C:\Users\mike.duncan\documents\visual studio 2010\Projects\nmap-tools\nmap-tools\obj\Debug\nmap-tools.dll
+C:\Users\mike.duncan\documents\visual studio 2010\Projects\nmap-tools\nmap-tools\obj\Debug\nmap-tools.pdb
