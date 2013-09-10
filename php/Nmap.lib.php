@@ -128,6 +128,16 @@ if(!class_exists("ArrayList"))  {
      public function size()  {
        return count($this->collection);
      }
+     
+     /**
+      * Return the object at the given $index.
+      *
+      * @param	int	$index
+      * @return	object
+      */
+     public function get($index)  {
+       return $this->collection[$index];
+     }
   
    }
 } //End ArrayList check and implementation.
@@ -171,6 +181,11 @@ class NmapRun  {
     trigger_error(sprintf("Parsed nmap report for scan performed at %s containing %d host(s).", $dom["startstr"], $this->hosts->size()), E_USER_NOTICE);
   }
   
+  /**
+   * Returns the value of the scanner element.
+   *
+   * @return	string	Scanner used in this scan. (i.e. nmap)
+   */
   public function getScanner()  {
     return $this->scanner;
   }
@@ -221,6 +236,38 @@ class NmapRun  {
    */
   public static function parse($file)  {
     return new NmapRun($file);
+  }
+  
+}
+
+class ScanInfo  {
+  
+  private $type;
+  private $protocol;
+  private $numservices;
+  private $services;
+  
+  public function __construct($ScanInfo)  {
+    $this->type = $ScanInfo["type"];
+    $this->protocol = $ScanInfo["protocol"];
+    $this->numservices = $ScanInfo["numservices"];
+    $this->services = $ScanInfo["services"];
+  }
+  
+  public function getType()  {
+    return $this->type;
+  }
+  
+  public function getProtocol()  {
+    return $this->protocol;
+  }
+  
+  public function getNumServices()  {
+    return $this->numservices;
+  }
+  
+  public function getServices()  {
+    return $this->services;
   }
   
 }
@@ -290,8 +337,8 @@ class Hostname {
       $this->type = $type;
     }else{
       $Hostname = $name;
-      $this->name = $Hostname["name"];
-      $this->type = $Hostname["type"];
+      $this->name = $Hostname["name"] ."";
+      $this->type = $Hostname["type"] ."";
     }
   }
   
@@ -393,7 +440,7 @@ class Service  {
   private $cpes;
   
   public function __construct($Service)  {
-    $this->name = $Service["name"];
+    $this->name = $Service["name"] ."";
     $this->product = $Service["product"];
     $this->version = $Service["version"];
     $this->extrainfo = $Service["extrainfo"];
@@ -464,7 +511,7 @@ class Script  {
   }
   
   public function __toString()  {
-    return $this->id;
+    return $this->getId();
   }
   
 }
@@ -497,12 +544,11 @@ class Port  {
     $this->protocol = $Port["protocol"];
     $this->portid = $Port["portid"];
     $this->state = new PortState($Port->state);
-    $this->service new Service($Port->service);
+    $this->service = new Service($Port->service);
     $this->scripts = new Scripts();
     foreach($Port->script as $script)
       $this->scripts->addScript($script);
-   
-    trigger_error(sprintf("Parsed port %s/%d (%s).", $this->protocol, $this->portid, $this->service), E_USER_NOTICE); 
+       
   }
   
   public function getPortId()  {
@@ -541,7 +587,7 @@ class Address  {
   private $type;
   
   public function __construct($Address)  {
-    $this->addr = $Address["addr"];
+    $this->addr = $Address["addr"] ."";
     $this->type = $Address["addrtype"];
   }
   
@@ -554,7 +600,7 @@ class Address  {
   }
   
   public function __toString()  {
-    return $this->addr;
+    return $this->getAddr();
   }
   
 }
@@ -581,7 +627,6 @@ class Host  {
     $this->status = new HostStatus($Host->status);
     $this->ports = new Ports($Host->ports);
     $this->scripts = new Scripts($Host->hostscript);
-    trigger_error(sprintf("Parsed host %s (%s) containing %d port(s).", $this, $this->address, $this->ports->size()), E_USER_NOTICE);
   }
   
   public function getHostnames()  {
@@ -615,7 +660,7 @@ class Host  {
   public function __toString()  {
     $o = $this->address ."";
     foreach($this->hostnames as $hostname)
-      $o = $hostname;
+      $o = $hostname ."";
       
     return $o;
   }
