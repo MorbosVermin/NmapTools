@@ -1,0 +1,10 @@
+Main-Class: com.waitwha.nmap.NmapRun
+
+Name: com/waitwha/nmap
+Specification-Title: NmapTools
+Specification-Version: 0.1
+Specification-Vendor: Mike Duncan (mike.duncan@waitwha.com)
+Implementation-Title: com.waitwha.nmap
+Implementation-Version: 0.1
+Implementation-Vendor: Mike Duncan (mike.duncan@waitwha.com)
+
