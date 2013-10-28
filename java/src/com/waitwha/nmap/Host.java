@@ -149,6 +149,7 @@ public class Host {
 	private Address address;
 	private ArrayList<Hostname> hostnames;
 	private ArrayList<Port> ports;
+	private OS os;
 	
 	public Host(Element host)  {
 		try  {
@@ -170,6 +171,8 @@ public class Host {
 		
 		this.hostnames = new ArrayList<Hostname>();
 		this.ports = new ArrayList<Port>();
+		this.os = null;
+		
 		try  {
 			this.status = new Status(ElementUtils.getFirstElementByName(host, "status"));
 			
@@ -183,9 +186,19 @@ public class Host {
 			for(int i = 0; i < ports.getLength(); i++)
 				this.ports.add(new Port((Element)ports.item(i)));
 		
+			Element os = ElementUtils.getFirstElementByName(host, "os");
+			this.os = new OS(os);
+			
 		}catch(ElementNotFoundException e)  {
 			
 		}
+	}
+
+	/**
+	 * @return the os
+	 */
+	public OS getOS() {
+		return os;
 	}
 
 	/**
@@ -222,6 +235,13 @@ public class Host {
 	public ArrayList<Hostname> getHostnames() {
 		return hostnames;
 	}
+	
+	public String getHostname()  {
+		if(this.hostnames.size() > 0)
+			return this.hostnames.get(0).toString();
+		
+		return this.address.toString();
+	}
 
 	/**
 	 * @return the ports
@@ -232,11 +252,7 @@ public class Host {
 	
 	@Override
 	public String toString()  {
-		String hostname = this.address.toString();
-		if(this.hostnames.size() > 0)
-			hostname = this.hostnames.get(0).toString();
-		
-		return String.format("%s (%s; %d port(s) scanned)", hostname, this.status, this.ports.size());
+		return String.format("%s (%s; %s; %d port(s) scanned)", this.getHostname(), this.status, this.os, this.ports.size());
 	}
 	
 }

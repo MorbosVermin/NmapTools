@@ -2,3 +2,4 @@ bin/*
 build/*
 build.number
 NmapTools-*-*.jar
+/bin

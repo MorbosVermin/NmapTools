@@ -37,6 +37,11 @@
 			debuglevel="${compiler.debuglevel}"
 			source="${compiler.source}"
 			target="${compiler.target}" />
+		
+		<copy 
+			file="${project.sources}${file.separator}com${file.separator}waitwha${file.separator}logging${file.separator}logging.properties"
+			tofile="${project.build}${file.separator}com${file.separator}waitwha${file.separator}logging${file.separator}logging.properties"
+		/>
 	
 	</target>
 	
@@ -45,7 +50,8 @@
 		<jar destfile="${project.name}-${project.version}-${build.number}.jar"
 			basedir="${project.build}"
 			encoding="UTF-8"
-			manifest="${project.manifest}" />
+			manifest="${project.manifest}"
+		/>
 	
 	</target>
 	
