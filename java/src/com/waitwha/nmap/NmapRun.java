@@ -150,6 +150,24 @@ public class NmapRun {
 	public String getStart() {
 		return start;
 	}
+	
+	/**
+	 * Goes through all scanned hosts for this scan and determines the 
+	 * end time for the scan.
+	 * 
+	 * @return	long End time of the scan.
+	 */
+	public long getEndTime()  {
+		long end = 0L;
+		for(Host host : getHosts())  {
+			long e = (long)host.getEndtime()*1000;
+			if(e > end)
+				end = e;
+			
+		}
+		
+		return end;
+	}
 
 	/**
 	 * @return the startStr
