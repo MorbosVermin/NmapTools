@@ -36,14 +36,9 @@ namespace nmap_tools
             return List.Contains(host);
         }
 
-        public int Count()
-        {
-            return List.Count;
-        }
-
         public bool Belongs(Host host)
         {
-            if(Count() == 0)
+            if(Count == 0)
                 return true;
 
             string subnet1 = this.ToString();

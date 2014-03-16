@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NmapVisualizer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="nmap_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="last_target" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="download_url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://nmap.org/dist/nmap-6.40-win32.zip</Value>
+    </Setting>
+    <Setting Name="download_hash" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">273E38E1781F1C29A0881BADA657C40FE36CE795</Value>
+    </Setting>
+    <Setting Name="download_name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Nmap v6.40 (Win32)</Value>
+    </Setting>
+    <Setting Name="download_folder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">nmap-6.40</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

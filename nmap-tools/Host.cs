@@ -89,6 +89,11 @@ namespace nmap_tools
 
         [XmlAttribute("vendor")]
         public string Vendor { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 
     public sealed class Hostname
@@ -98,6 +103,11 @@ namespace nmap_tools
 
         [XmlAttribute("type")]
         public string Type { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
 
     }
 

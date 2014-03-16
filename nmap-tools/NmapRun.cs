@@ -87,6 +87,39 @@ namespace nmap_tools
 
             return run;
         }
+
+        /// <summary>
+        /// Saves the NmapRun object to a File at the given path.
+        /// </summary>
+        /// <param name="path">Path to save the NmapRun object too.</param>
+        /// <returns>Whether or not the save was successful.</returns>
+        public bool Save(string path)
+        {
+            bool ok = false;
+            try
+            {
+                XmlSerializer s = new XmlSerializer(typeof(NmapRun));
+                s.Serialize(File.OpenWrite(path), this);
+                ok = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: Could not save NmapRun object to path {0}: {1} {2}", path, e.GetType().Name, e.Message);
+            }
+
+            return ok;
+        }
+
+        /// <summary>
+        /// Replaces the given target Host object with the replacement Host object given.
+        /// </summary>
+        /// <param name="target">Target Host object to remove.</param>
+        /// <param name="replacement">Replacement Host object to add.</param>
+        public void ReplaceHost(Host target, Host replacement)
+        {
+            Hosts.Remove(target);
+            Hosts.Add(replacement);
+        }
     }
 
     public sealed class ScanInfo
