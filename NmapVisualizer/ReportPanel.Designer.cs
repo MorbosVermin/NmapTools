@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportPanel));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -48,6 +48,7 @@
             this.colOS = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPorts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imgList64 = new System.Windows.Forms.ImageList(this.components);
+            this.colMac = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,50 +98,50 @@
             // 
             // chartPorts
             // 
-            chartArea1.Area3DStyle.Enable3D = true;
-            chartArea1.Name = "ChartArea1";
-            this.chartPorts.ChartAreas.Add(chartArea1);
+            chartArea3.Area3DStyle.Enable3D = true;
+            chartArea3.Name = "ChartArea1";
+            this.chartPorts.ChartAreas.Add(chartArea3);
             this.chartPorts.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartPorts.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chartPorts.Legends.Add(legend3);
             this.chartPorts.Location = new System.Drawing.Point(0, 0);
             this.chartPorts.Name = "chartPorts";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.SmartLabelStyle.Enabled = false;
-            this.chartPorts.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.SmartLabelStyle.Enabled = false;
+            this.chartPorts.Series.Add(series3);
             this.chartPorts.Size = new System.Drawing.Size(188, 148);
             this.chartPorts.TabIndex = 0;
             this.chartPorts.Text = "Top Ports";
-            title1.Name = "Title1";
-            title1.Text = "Top Ports";
-            this.chartPorts.Titles.Add(title1);
+            title3.Name = "Title1";
+            title3.Text = "Top Ports";
+            this.chartPorts.Titles.Add(title3);
             this.chartPorts.Click += new System.EventHandler(this.chartPorts_Click);
             // 
             // chartOS
             // 
-            chartArea2.Area3DStyle.Enable3D = true;
-            chartArea2.Name = "ChartArea1";
-            this.chartOS.ChartAreas.Add(chartArea2);
+            chartArea4.Area3DStyle.Enable3D = true;
+            chartArea4.Name = "ChartArea1";
+            this.chartOS.ChartAreas.Add(chartArea4);
             this.chartOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartOS.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            this.chartOS.Legends.Add(legend4);
             this.chartOS.Location = new System.Drawing.Point(0, 0);
             this.chartOS.Name = "chartOS";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.ToolTip = "Operating Systems";
-            this.chartOS.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.ToolTip = "Operating Systems";
+            this.chartOS.Series.Add(series4);
             this.chartOS.Size = new System.Drawing.Size(188, 184);
             this.chartOS.TabIndex = 0;
             this.chartOS.Text = "Top OS";
-            title2.Name = "Title1";
-            title2.Text = "Operating Systems";
-            this.chartOS.Titles.Add(title2);
+            title4.Name = "Title1";
+            title4.Text = "Operating Systems";
+            this.chartOS.Titles.Add(title4);
             this.chartOS.Click += new System.EventHandler(this.chartOS_Click);
             // 
             // lvHosts
@@ -148,6 +149,7 @@
             this.lvHosts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colHostname,
             this.colIP,
+            this.colMac,
             this.colOS,
             this.colPorts});
             this.lvHosts.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -166,18 +168,23 @@
             // colHostname
             // 
             this.colHostname.Text = "Hostname";
+            this.colHostname.Width = 150;
             // 
             // colIP
             // 
             this.colIP.Text = "IP";
+            this.colIP.Width = 100;
             // 
             // colOS
             // 
             this.colOS.Text = "Operating System";
+            this.colOS.Width = 200;
             // 
             // colPorts
             // 
             this.colPorts.Text = "Ports";
+            this.colPorts.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.colPorts.Width = 40;
             // 
             // imgList64
             // 
@@ -189,6 +196,11 @@
             this.imgList64.Images.SetKeyName(3, "Solaris");
             this.imgList64.Images.SetKeyName(4, "Windows");
             this.imgList64.Images.SetKeyName(5, "Unknown");
+            // 
+            // colMac
+            // 
+            this.colMac.Text = "MAC";
+            this.colMac.Width = 100;
             // 
             // ReportPanel
             // 
@@ -223,5 +235,6 @@
         private System.Windows.Forms.ColumnHeader colIP;
         private System.Windows.Forms.ColumnHeader colOS;
         private System.Windows.Forms.ColumnHeader colPorts;
+        private System.Windows.Forms.ColumnHeader colMac;
     }
 }

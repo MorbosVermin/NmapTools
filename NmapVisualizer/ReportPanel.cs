@@ -79,7 +79,7 @@ namespace NmapVisualizer
                     else
                         osScores.Score("Unknown");
 
-                    string[] values = { host.Addresses[0].ToString(), ((host.DetectedOS()) ? host.OS.Match.Name : ""), host.Ports.Count + "" };
+                    string[] values = { host.FirstIpAddress, host.MacAddress, ((host.DetectedOS()) ? host.OS.Match.Name : ""), host.Ports.Count + "" };
                     ListViewItem item = new ListViewItem(host.ToString(), i);
                     //item.BackColor = (r) ? Color.LightGray : Color.White;
                     item.SubItems.AddRange(values);

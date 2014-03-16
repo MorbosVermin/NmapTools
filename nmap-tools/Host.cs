@@ -6,6 +6,9 @@ using System.Xml.Serialization;
 
 namespace nmap_tools
 {
+    /// <summary>
+    /// Represents a Host found during an Nmap scan.
+    /// </summary>
     public sealed class Host
     {
         [XmlAttribute("starttime")]
@@ -17,17 +20,33 @@ namespace nmap_tools
         [XmlElement("status")]
         public Status Status { get; set; }
 
+        /// <summary>
+        /// List of IPv4/6 addresses found by Nmap during the scan.
+        /// </summary>
         [XmlElement("address")]
         public List<Address> Addresses { get; set; }
 
+        /// <summary>
+        /// List of Hostnames found by Nmap during the scan. However, Nmap
+        /// uses either DNS settings given to it during the scan or the 
+        /// system DNS setting which may/not be able to resolve all hosts.
+        /// </summary>
         [XmlArray("hostnames")]
         [XmlArrayItem("hostname")]
         public List<Hostname> Hostnames { get; set; }
 
+        /// <summary>
+        /// List of Port objects for this Host.
+        /// </summary>
         [XmlArray("ports")]
         [XmlArrayItem("port")]
         public List<Port> Ports { get; set; }
 
+        /// <summary>
+        /// The OS if the OS detection option was given for this scan. Be sure
+        /// to check the DetectedOS() method to see whether or not Nmap was 
+        /// able to resolve the OS fingerprint.
+        /// </summary>
         [XmlElement("os")]
         public OS OS { get; set; }
 
@@ -50,6 +69,54 @@ namespace nmap_tools
         public Times Times { get; set; }
 
         /// <summary>
+        /// Returns only the IPv4 and IPv6 addresses for this Host.
+        /// </summary>
+        public string[] IpAddresses
+        {
+            get
+            {
+                if (Addresses.Count > 0)
+                {
+                    string ips = "";
+                    foreach (Address addr in Addresses)
+                    {
+                        if (addr.Type.StartsWith("ipv", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            ips += addr.Name + ",";
+                        }
+                    }
+
+                    return (ips.Length > 0) ? ips.Substring(0, ips.Length - 1).Split(',') : new string[0];
+                }
+
+                return new string[0];
+            }
+        }
+
+        /// <summary>
+        /// Returns the first IP address found for this Host.
+        /// </summary>
+        public string FirstIpAddress { get { return (IpAddresses.Length > 0) ? IpAddresses[0] : "";  } }
+
+        /// <summary>
+        /// Returns the MAC Address found for this Host.
+        /// </summary>
+        public string MacAddress
+        {
+            get
+            {
+                foreach (Address addr in Addresses)
+                {
+                    if (!addr.Type.StartsWith("ipv"))
+                        return addr.Name;
+
+                }
+
+                return "";
+            }
+        }
+
+        /// <summary>
         /// Returns TRUE if the OS was detected during this scan.
         /// </summary>
         /// <returns>bool</returns>
@@ -59,12 +126,14 @@ namespace nmap_tools
         }
 
         /// <summary>
-        /// Returns the IP address of this host.
+        /// String representation of this Host object. If a Hostname is found, 
+        /// we will default to that value. Otherwise, the first IP address is
+        /// returned.
         /// </summary>
-        /// <returns>string; IP Address</returns>
+        /// <returns>string; Hostname and IP Address -- OR -- FirstIPAddress</returns>
         public override string ToString()
         {
-            return Addresses[0].Name;
+            return (Hostnames.Count > 0) ? String.Format("{0} ({1})", Hostnames[0].Name, FirstIpAddress) : FirstIpAddress;
         }
 
     }
