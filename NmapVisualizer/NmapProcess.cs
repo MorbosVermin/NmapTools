@@ -103,7 +103,6 @@ namespace NmapVisualizer
 
         private void NmapProcess_Load(object sender, EventArgs e)
         {
-            this.Height = 160;
             Wait = true;
             backgroundWorker1.RunWorkerAsync();
         }
