@@ -1,9 +1,12 @@
 package com.waitwha.nmap;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
+import com.waitwha.logging.LogManager;
 
 /**
  * <b>NmapTools</b>: OS<br/>
@@ -34,6 +37,8 @@ import org.w3c.dom.NodeList;
  */
 public class OS {
 
+	private static final Logger log = LogManager.getLogger(OS.class);
+	
 	/**
 	 * Ports used during the os matching process.
 	 * 
@@ -155,8 +160,19 @@ public class OS {
 		public OsMatch(Element osmatch)  {
 			super();
 			this.name = osmatch.getAttribute("name");
-			this.accuracy = Integer.parseInt(osmatch.getAttribute("accuracy"));
-			this.line = Integer.parseInt(osmatch.getAttribute("line"));
+			this.accuracy = 0;
+			this.line = 0;
+			try  {
+				this.accuracy = Integer.parseInt(osmatch.getAttribute("accuracy"));
+			}catch(NumberFormatException e) {
+				log.warning(String.format("Could not parse 'accuracy' value: %s", osmatch.getAttribute("accuracy")));
+			}
+			
+			try  {
+				this.line = Integer.parseInt(osmatch.getAttribute("line"));
+			}catch(NumberFormatException e) {
+				log.warning(String.format("Could not parse 'line' value: %s", osmatch.getAttribute("line")));
+			}
 			
 			NodeList osclasses = osmatch.getElementsByTagName("osclass");
 			for(int i = 0; i < osclasses.getLength(); i++)
