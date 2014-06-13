@@ -102,7 +102,7 @@ public final class NmapProcess
 			while((output = procReader.readLine()) != null)
 				log.fine(output);
 			
-			exitCode = p.exitValue();
+			exitCode = p.waitFor();
 			log.info(String.format("%s process completed with exit code: %d", this.path, this.exitCode));
 			
 		}catch(Exception e) {
