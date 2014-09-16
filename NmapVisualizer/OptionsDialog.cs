@@ -38,6 +38,7 @@ namespace NmapVisualizer
         private void button3_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default["nmap_path"] = textBox1.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
